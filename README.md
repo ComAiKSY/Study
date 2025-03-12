@@ -4,6 +4,10 @@
     <div style="text-align: left;"> 
     <h2 style="border-bottom: 1px solid #21262d; color: #c9d1d9;"> 학습 </h2>  
     <div style="font-weight: 700; font-size: 15px; text-align: left; color: #c9d1d9;">  </div> 
+        <u1 style="color: #c9d1d9; font-size: 15px; font-weight: 700;">
+            <li>📘 Algorithm <li>
+            <li>📗 Data Structure</li>
+        <u1>    
     </div>
     <div style="text-align: left;">
     <h2 style="border-bottom: 1px solid #21262d; color: #c9d1d9;"> 🛠️ Tech Stacks </h2> <br> 
