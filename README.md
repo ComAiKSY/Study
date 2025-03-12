@@ -5,7 +5,7 @@
 ## 학습
 
 - 📘 [Algorithm](https://github.com/ComAiKSY/Study/tree/main/Algorithm)
-- 📗 Data Structure
 - 📕 [Database](https://github.com/ComAiKSY/Study/tree/main/Data%20Base)
+- 📗 Data Structure
 
 ## 🛠️ Tech Stacks
