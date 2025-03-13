@@ -49,5 +49,14 @@ print(mymsg) # print(mtmsg+100) / Syntax Error / Input = String Type / print(mym
 mymsg = int(input('Input message: '))
 print(mymsg + 50)
 
+#문제
+name = input('Enter your name: ')
+address = input('Enter your address: ')
+weight = input('Enter your weight(g): ')
+money = weight * 5
+print('name : ', name)
+print('address : ', address)
+print('money : ', money)
+
 
 
