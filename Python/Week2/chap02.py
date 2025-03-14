@@ -61,6 +61,13 @@ print('money : ', money)
 #연산자 / 사칙연산 / 연산자 우선순위 (우선순위가 높은것 부터, 동일할 경우 왼쪽에서 오른쪽 방향으로 계산
 #추가지원 // : 몫연산, % : 나머지 연산(modular, mod), ** : 제곱 / 나머지 연산자 없이 나머지 연산 구현해 보기
 
+mainvalue = int(input('Enter main value: '))
+secondvalue = int(input('Enter second value: '))
+firstvalue = mainvalue // secondvalue
+result = mainvalue - (secondvalue * firstvalue)
+print(result)
+
+
 #문제
 #1pound = 0.453592kg
 #1kg = 2.204623lb
