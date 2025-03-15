@@ -91,9 +91,9 @@ public class Quick{
 }
 ```
 # Pivot 선정 방법
- 1. 랜덤 선택
- 2. 3 숫자의 중앙값 선정 (index 0, index n/2, index n)
- 3. Median-of-Medians : 3등분 후, 각 부분에서 가장 왼쪽, 중간, 오른쪽 숫자 중에 중앙값을 찾은 후, 세 중앙값들 중에서 중앙값을 pivot으로 선정
+    1. 랜덤 선택
+    2. 세 숫자의 중앙값 선정 (index 0, index n/2, index n)
+    3. Median-of-Medians : 3등분 후, 각 부분에서 가장 왼쪽, 중간, 오른쪽 숫자 중에 중앙값을 찾은 후, 세 중앙값들 중에서 중앙값을 pivot으로 선정
 
 # 특징
     입력의 크기가 매우 클 때, Quick sort의 성능을 높이기 위해 Insertion sort 동시에 사용
