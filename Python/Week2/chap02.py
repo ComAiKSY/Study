@@ -119,5 +119,17 @@ for i in range(5):
     all += total
 print(all)
 
+res = 100<200
+print(res)
+print(type(res)) # Boolean, bool : 참 거짓 구분
+
+# 대입 연산자 우선순위 비교
+
+# 주석
+
+score = (3*3.5 + 2*4.0 + 1*4.5)/6
+print(f'평균 학점 {score:.2f}')
+
+
 
 
