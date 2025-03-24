@@ -3,6 +3,10 @@
 - #### Pivot을 선택(첫번째, 마지막, 중간 값 or 랜덤)
 - #### Pivot 보다 작은 값들은 왼쪽, 큰 값들은 오른쪽에 배치
 
+# 시간 복잡도
+- #### 최악의 경우에 대한 시간 복잡도 O(n^2)
+- #### 최선의 경우에 대한 시간 복잡도 O(nlogn)
+
 # sudo code
     QuickSort(A, left, right)
     입력: 배열 A[left]~A[right]

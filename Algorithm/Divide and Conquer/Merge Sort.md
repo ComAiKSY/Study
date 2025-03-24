@@ -3,6 +3,9 @@
 - #### 부분 문제의 크기가 1/2로 감소하는 알고리즘
 - #### 합병 과정이 문제를 정복하는 과정
 
+# 시간 복잡도
+- #### 최악의 경우에 대한 시간 복잡도 O(nlogn)
+
 # sudo code
     MergeSort(A,p,q) A:입력, p:Subgroup first index, q:Subgroup last index
     Input:A[p] ~ A[q]
