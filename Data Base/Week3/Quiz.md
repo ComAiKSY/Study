@@ -14,8 +14,8 @@
 5. city 테이블, 우리나라 도시들 출력, 국가코드 모름
     select * from city where CountryCode = (select code from country where name = 'south korea')
 
-6. 1. 한국어 사용 나라
-        select * from countrylanguage where language = 'korean'
+6. 1. 한국어 사용 나라 (서브쿼리 사용)
+        SELECT Name FROM country WHERE Code IN ( SELECT CountryCode FROM countrylanguage WHERE Language = 'Korean');
     
     2. 미국에서 사용하는 언어 출력
         select * from countrylanguage where CountryCode = 'usa'
