@@ -13,6 +13,8 @@ int main(){ // 두 양의 정수가 주어졌을 때 최대 공약수 구해라 
         min = num1;
     }
     else min = num2;
+
+    //GDG(num1, num2, min);
     
     for(int i=2; i<=min; i++){ // 2 ~ min 만큼 나누기 실행
         while(num1%i==0 && num2%i==0){  // i를 나누어 나머지가 0이면 공약수
@@ -27,3 +29,9 @@ int main(){ // 두 양의 정수가 주어졌을 때 최대 공약수 구해라 
 
     cout << "최대 공약수 : " << gdg << endl;
 }
+
+// int GDG(int num1, int num2, int min){
+//     for(int i=2; i<=min; i++){
+
+//     }
+// }
