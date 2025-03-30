@@ -27,10 +27,28 @@ for i in range(2, -1, -1):
 for i in range(1,6,1):
     print(i)
 
-#합 구하기
+# 합 구하기
 hap=0
 for i in range(1,11,1):
     # hap = hap + i
     hap += i
 print(hap)
+
+# 구구단
+for i in range(2,10):
+    for n in range(1,10):
+        print(f'{i} * {n} = {i * n}')
+
+i = 2
+n = 1
+while i <= 9:
+    while n <= 9:
+        if n==5:
+            break # 가장 가까운 반복문만 종료 즉 i 는 반복
+        print(f'{i} * {n} = {i * n}')
+        n += 1
+    n = 1 # n 초기화 필요 변수값 관리 필수
+    i+= 1
+
+
 
