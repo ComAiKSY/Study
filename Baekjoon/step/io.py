@@ -1,19 +1,20 @@
-#
+#2557
 print(f'Hello World!')
-#
+#1000
 num1, num2 = map(int, input().split())
 print(f'{num1 + num2}')
-#
+#1001
 num1, num2 = map(int, input().split())
 print(f'{num1 - num2}')
-
+#10998
 num1, num2 = map(int, input().split())
 print(f'{num1 * num2}')
-
-
-
+#1008
 num1, num2 = map(float, input().split())
 print(f'{num1/num2}')
+#10869
+num1,num2 = map(int,input().split())
+print(f'{num1+num2}\n{num1-num2}\n{num1*num2}\n{int(num1/num2)}\n{num1%num2}')
 #10926
 name = input()
 print(f'{name}??!')
