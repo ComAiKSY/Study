@@ -36,3 +36,9 @@ num1, num2, num3 = map(int,input().split())
 print(f'{num1+num2+num3}')
 #10171
 print("\\    /\\\n )  ( ')\n(  /  )\n \\(__)||")
+#10172
+print('|\\_/|')
+print('|q p|   /}')
+print('( 0 )"""\\')
+print('|"^"`    |')
+print('||_/=\\\\__|')
