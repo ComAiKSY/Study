@@ -34,3 +34,5 @@ print(f'{num1*c}\n{num1*b}\n{num1*c}\n{num1*num2}')
 #11382
 num1, num2, num3 = map(int,input().split())
 print(f'{num1+num2+num3}')
+#10171
+print("\\    /\\\n )  ( ')\n(  /  )\n \\(__)||")
