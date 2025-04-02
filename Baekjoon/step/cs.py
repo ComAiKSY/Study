@@ -71,3 +71,15 @@ if m + m1 >= 60:
         print(f'{h} {m}')
 else:
     print(f'{h} {m+m1}')
+
+#2480
+num1, num2, num3 = map(int,input().split())
+a = [num1, num2, num3]
+if num1 == num2 == num3:
+    print(f'{10000+num1*1000}')
+elif num1 == num2 or num1 == num3:
+    print(f'{1000 + num1*100}')
+elif num2 == num3:
+    print(f'{1000 + num2*100}')
+else:
+    print(f'{max(a)*100}')
