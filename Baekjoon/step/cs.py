@@ -39,3 +39,17 @@ elif x<0 and y<0:
     print('3')
 else:
     print('4')
+
+#2884
+h,m= map(int, input().split())
+if m-45 < 0:
+    m = 45 -m
+    m = 60 -m
+    if h==0:
+        h = 23
+    else:
+        h = h-1
+    print(f'{h} {m}')
+else:
+    print(f'{h} {m}')
+
