@@ -53,3 +53,21 @@ if m-45 < 0:
 else:
     print(f'{h} {m}')
 
+#2525
+h, m = map(int, input().split())
+m1 = int(input())
+if m + m1 >= 60:
+    h = h+1
+    if h == 24:
+        h = 0
+    m = m+m1 - 60
+    if m == 60:
+        h=h+1
+        if h == 24:
+            h=0
+        m = 0
+        print(f'{h} {m}')
+    else:
+        print(f'{h} {m}')
+else:
+    print(f'{h} {m+m1}')
