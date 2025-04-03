@@ -108,3 +108,48 @@ while True:
             print(f'완벽')
 
 #Quiz8
+num1, num2 = map(float, input().split())
+count = int(num1 // num2)
+if num1 - count*num2 > 0:
+    print(f'{count}번')
+else:
+    print(f'{count-1}번')
+
+#Quiz9
+import random
+weight = int(input())
+num1 = int(input())
+item = []
+for _ in range(num1):
+    item.append(random.randint(1, 50))
+
+for i in range(num1):
+    print(f'아이템 무게 : {item[i]}')
+    weight = weight - item[i]
+    if weight < 0:
+        print(f'{i}개 담음,{weight+item[i]}남음')
+        break
+
+#Quiz10
+import random
+num1 = int(input())
+count = 0
+for i in range(num1):
+    a = random.randint(2, 9)
+    b = random.randint(2, 9)
+    print(f'{a}X{b} = ')
+    num2 = int(input())
+    if a*b == num2:
+        print(f'정답')
+        count+=1
+    else:
+        print(f'오답')
+print(f'{count}개 정답')
+
+#Quiz11
+height = int(input()) 1 3 5 7 9
+for i in range(height):
+    print
+
+
+
