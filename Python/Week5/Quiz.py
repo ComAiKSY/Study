@@ -92,22 +92,19 @@ while True:
     else:
         for char in text:
             if char.isdigit():
-                isdigit = 1
+                isdigit=1
             elif char.isupper():
                 isupper=1
             elif char.islower():
                 islower=1
 
-        if isupper != 1 and islower != 1 and isdigit != 1:
-            print(f'대문자 입력 필요')
-            print(f'소문자 입력 필요')
-            print(f'숫자 입력 필요')
-        elif islower != 1 and isdigit != 1:
-            print(f'소문자 입력 필요')
-            print(f'숫자 입력 필요')
-        elif isdigit != 1:
-            print(f'숫자 입력 필요')
-        else:
-            print(f'안전한 비밀번호 입니다.')
+        if not isupper:
+            print(f'대문자 필요')
+        if not islower:
+            print(f'소문자 필요')
+        if not isdigit:
+            print(f'숫자 필요')
+        if isdigit and isupper and islower:
+            print(f'완벽')
 
-
+#Quiz8
