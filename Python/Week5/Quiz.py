@@ -147,9 +147,74 @@ for i in range(num1):
 print(f'{count}개 정답')
 
 #Quiz11
-height = int(input()) 1 3 5 7 9
+height = int(input())
 for i in range(height):
-    print
+    count = i*2+1
+    print(f'{" "*(height-i-1)}{"*"*count}{" "*(height-i-1)}')
+
+#Quiz12
+num1 = int(input())
+count = 0
+while True:
+    if num1 % 2 == 0:
+        num1 = num1//2
+        count +=1
+    else:
+        num1 = num1*3+1
+        count +=1
+    if num1 == 1:
+        print(f'{count}번')
+        break
+
+#Quiz13
+num1 = int(input())
+time = []
+money = []
+for i in range(num1):
+    time.append(int(input()))
+    money.append(int(input()))
+    if time[i] > 40:
+        print(f'{i+1}번째 직원의 주급은 {money[i]*time[i]*1.5}')
+    else:
+        print(f'{i + 1}번째 직원의 주급은 {money[i] * time[i]}')
+
+#Quiz14
+num1 = int(input())
+for i in range(2, num1+1):
+    count = 0
+    for j in range(1,i+1):
+        if i % j == 0:
+            count += 1
+    if count == 2:
+        print(f'{i}')
+
+#Quiz15
+month = int(input())
+day = int(input())
+if (month == 1 and day >= 20) or (month == 2 and day <= 18):
+    print(f'물병')
+elif (month == 2 and day >= 19) or (month == 3 and day <= 20):
+    print(f'물고기')
+elif (month == 3 and day >= 21) or (month == 4 and day <= 19):
+    print(f'양')
+elif (month == 4 and day >= 20) or (month == 5 and day <= 20):
+    print(f'황소')
+elif (month == 5 and day >= 21) or (month == 6 and day <= 21):
+    print(f'쌍둥이')
+elif (month == 6 and day >= 22) or (month == 7 and day <= 22):
+    print(f'게')
+elif (month == 7 and day >= 23) or (month == 8 and day <= 22):
+    print(f'사자')
+elif (month == 8 and day >= 23) or (month == 9 and day <= 23):
+    print(f'처녀')
+elif (month == 9 and day >= 24) or (month == 10 and day <= 22):
+    print(f'천칭')
+elif (month == 10 and day >= 23) or (month == 11 and day <= 22):
+    print(f'전갈')
+elif (month == 11 and day >= 23) or (month == 12 and day <= 24):
+    print(f'사수')
+elif (month == 12 and day >= 25) or (month == 1 and day <= 19):
+    print(f'염소')
 
 
 
