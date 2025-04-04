@@ -70,3 +70,39 @@ for i in range(T):
     print(f'Case #{i+1}: {A[i]} + {B[i]} = {total[i]}')
 
 #2438
+N = int(sys.stdin.readline())
+for i in range(N):
+    print(f'{'*'*(i+1)}')
+
+#2439
+N = int(sys.stdin.readline())
+for i in range(N):
+    print(f'{' '*(N-1-i)}{'*'*(i+1)}')
+
+#10952
+A = []
+B = []
+while True:
+    a, b = map(int, sys.stdin.readline().split())
+    if a==0 and b==0:
+        break
+    A.append(a)
+    B.append(b)
+length = len(A)
+for i in range(length):
+    print(f'{A[i]+B[i]}')
+
+#10951
+A=[]
+B=[]
+
+while True:
+    try:
+        a, b = map(int, sys.stdin.readline().split())
+        A.append(a)
+        B.append(b)
+    except:
+        break
+length = len(A)
+for i in range(length):
+    print(f'{A[i]+B[i]}')
