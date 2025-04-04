@@ -47,3 +47,26 @@ for _ in range(n):
 for _ in range(n):
     print(total[_])
 
+#11021
+T = int(sys.stdin.readline())
+A = [0]*T
+B = [0]*T
+total = [0]*T
+for i in range(T):
+    A[i], B[i] = map(int, sys.stdin.readline().split())
+    total[i] = A[i]+B[i]
+for i in range(T):
+    print(f'Case #{i+1}: {total[i]}')
+
+#11022
+T = int(sys.stdin.readline())
+A = [0]*T
+B = [0]*T
+total = [0]*T
+for i in range(T):
+    A[i], B[i] = map(int, sys.stdin.readline().split())
+    total[i] = A[i]+B[i]
+for i in range(T):
+    print(f'Case #{i+1}: {A[i]} + {B[i]} = {total[i]}')
+
+#2438
