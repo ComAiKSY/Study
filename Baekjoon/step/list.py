@@ -34,3 +34,16 @@ for i in A:
     elif i > max:
         max = i
 print(f'{min} {max}')
+
+#2526
+A=[0]*9
+max = 0
+max_index = -1
+for i in range(9):
+    A[i] = int(sys.stdin.readline())
+
+for i in range(9):
+    if A[i] > max:
+        max = A[i]
+        max_index = i+1
+print(f'{max}\n{max_index}')
