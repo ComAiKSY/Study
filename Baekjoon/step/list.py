@@ -47,3 +47,13 @@ for i in range(9):
         max = A[i]
         max_index = i+1
 print(f'{max}\n{max_index}')
+
+#10810
+N, M = map(int,sys.stdin.readline().split())
+array = [0]*N
+for i in range(M):
+    a,b,c = map(int,sys.stdin.readline().split())
+    for j in range(a-1,b):
+        array[j] = c
+for k in range(N):
+    print(array[k], end=' ')
