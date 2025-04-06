@@ -1,4 +1,5 @@
 #10807
+import sys
 from asyncio.windows_events import INFINITE
 
 N = int(sys.stdin.readline())
@@ -55,5 +56,16 @@ for i in range(M):
     a,b,c = map(int,sys.stdin.readline().split())
     for j in range(a-1,b):
         array[j] = c
+for k in range(N):
+    print(array[k], end=' ')
+
+#10813
+N, M = map(int,sys.stdin.readline().split())
+array= [0]*N
+for i in range(N):
+    array[i] = i+1
+for j in range(M):
+    a, b = map(int, sys.stdin.readline().split())
+    array[a-1], array[b-1] = array[b-1], array[a-1]
 for k in range(N):
     print(array[k], end=' ')
