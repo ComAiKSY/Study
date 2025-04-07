@@ -69,3 +69,13 @@ for j in range(M):
     array[a-1], array[b-1] = array[b-1], array[a-1]
 for k in range(N):
     print(array[k], end=' ')
+
+#5597
+num = 28
+count = [0]*30
+for i in range(num):
+    flag = int(sys.stdin.readline())
+    count[flag-1] = 1
+for i in range(num):
+    if count[i] == 0:
+        print(i+1)
