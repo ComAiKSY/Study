@@ -93,3 +93,20 @@ for i in range(1,10):
         if remain[i] == remain[j]:
             count -=1
 print(count)
+
+#10811
+N, M = map(int, sys.stdin.readline().split())
+array = [i + 1 for i in range(N)]
+
+for _ in range(M):
+    a, b = map(int, sys.stdin.readline().split())
+    if a > b:
+        a, b = b, a
+    a -= 1
+    b -= 1
+    while a < b:
+        array[a], array[b] = array[b], array[a]
+        a += 1
+        b -= 1
+
+print(*array)
