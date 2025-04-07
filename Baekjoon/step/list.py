@@ -110,3 +110,14 @@ for _ in range(M):
         b -= 1
 
 print(*array)
+
+#1546
+total = 0
+N = int(sys.stdin.readline())
+score = list(map(int, sys.stdin.readline().split()))
+M = max(score)
+for i in range(N):
+    score[i] = score[i]/M*100
+for i in range(N):
+    total += score[i]
+print(total/N)
