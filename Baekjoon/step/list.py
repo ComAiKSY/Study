@@ -79,3 +79,17 @@ for i in range(num):
 for i in range(num):
     if count[i] == 0:
         print(i+1)
+
+#3052
+N = [0]*10
+remain = [0]*10
+count = 10
+diff = 0
+for i in range(10):
+    N[i] = int(sys.stdin.readline())
+    remain[i] = N[i]%42
+for i in range(1,10):
+    for j in range(0,i-1):
+        if remain[i] == remain[j]:
+            count -=1
+print(count)
