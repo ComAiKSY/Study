@@ -3,3 +3,8 @@ word = str(sys.stdin.readline().strip())
 array = list(word)
 i = int(sys.stdin.readline())
 print(array[i-1])
+
+#2743
+word = str(sys.stdin.readline().strip())
+lenght = len(word)
+print(lenght)
