@@ -10,3 +10,7 @@
 28p 2. select mem_id "회원 아이디", sum(amount) "구매 개수", sum(amount * price) "구매 금액" from buy group by mem_id order by sum(amount) desc;
 29p select mem_id, avg(amount) from buy group by mem_id
 31p select mem_id "회원아이디", sum(price*amount) "구매금액" from buy group by mem_id having sum(price*amount) >= 100 and sum(price*amount) <= 1500
+
+3장 확인문제
+4. select Name from country where Name like "%ko%";
+5. 
