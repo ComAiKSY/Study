@@ -13,4 +13,7 @@
 
 3장 확인문제
 4. select Name from country where Name like "%ko%";
-5. 
+5. select name from city where countrycode = (select code from country where name like "%Italy%");
+6.1 select name from country where Code in (select CountryCode from countrylanguage where Language = "Korean");
+6.2 select language from countrylanguage where CountryCode = "USA";
+6.3 select  Language "언어", count(CountryCode) "사용국가수" from countrylanguage group by Language order by count(CountryCode) desc limit 5
