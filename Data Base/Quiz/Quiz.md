@@ -17,3 +17,33 @@
 6.1 select name from country where Code in (select CountryCode from countrylanguage where Language = "Korean");
 6.2 select language from countrylanguage where CountryCode = "USA";
 6.3 select  Language "언어", count(CountryCode) "사용국가수" from countrylanguage group by Language order by count(CountryCode) desc limit 5
+
+4장 문제
+28p.2 
+    select M.addr 지역, sum(B.amount*B.price) 금액 from member M
+    inner join buy B
+    on M.mem_id = B.mem_id
+    GROUP BY M.addr
+    order by sum(B.amount*B.price) desc
+
+Quiz 8
+    select y.name 도시이름, C.name 나라이름, Y.population 도시인구 from city Y inner join country C on C.Code = Y.CountryCode where Y.Population >= 9000000 order by Y.Population desc
+
+Quiz 9
+    SELECT 
+    C.Name AS 나라이름, 
+    C.Code AS code, 
+    COUNT(*) AS 공식언어수
+    FROM countrylanguage L
+    INNER JOIN country C ON C.Code = L.CountryCode
+    WHERE L.IsOfficial = 'T'
+    GROUP BY C.Code
+    HAVING COUNT(*) >= 3
+    order by COUNT(*) desc; 
+
+Quiz 10
+    select UPPER(Y.name) as 도시, FORMAT(Y.population,0) as 인구수 from city Y inner join country C on Y.CountryCode = C.code where Y.CountryCode = 'KOR' order by Y.Population desc limit 5
+
+Quiz 11
+    select C.name as 나라, count(*) as 도시수 from country C inner join city Y on C.code = Y.CountryCode group by C.code order by count(*) desc limit 10
+    
