@@ -37,7 +37,7 @@ Quiz 3
 
 Quiz 7
     create table buy2 as select mem_id, price from buy
-    prepare myquery from 'using buy2 set price = price + (price*?)'
+    prepare myquery from 'update buy2 set price = price + (price*?)'
     set myquery @rate = 0.1;
     execute myquery using @rate;
     set myquery @rate = -0.1;
@@ -77,3 +77,22 @@ Quiz 10
 Quiz 11
     select C.name as 나라, count(*) as 도시수 from country C inner join city Y on C.code = Y.CountryCode group by C.code order by count(*) desc limit 10
     select (select name from country where Code = city.countrycode) as 나라, count(*) as 도시수 from city group by CountryCode order by count(*) desc limit 10
+
+Quiz 12
+    select Y.code as 국가코드, Y.name as 국가명 from country Y left join city C on C.countrycode = Y.code where C.name is null
+
+Quiz 21
+    select concat(first_name, ' ', last_name) as 동명이인 from customer where first_name in (select first_name from customer group by first_name having count(*)>=2) order by 동명이인
+
+Quiz 22
+    cursor = conn.cursor()
+
+    # 테이블 삭제 SQL
+    sql = "DROP TABLE IF EXISTS pay2"
+
+    # 실행
+    cursor.execute(sql)
+
+    # 커밋 및 종료
+    conn.commit()
+    conn.close()
