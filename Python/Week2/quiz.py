@@ -114,3 +114,4 @@ if age < 18:
 else:
     print(f'성인')
 
+
