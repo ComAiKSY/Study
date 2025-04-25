@@ -82,30 +82,38 @@ for i in range(num1):
 
 #Quiz7
 while True:
-    text = input()
-    length = len(text)
-    isdigit =0
-    isupper = 0
-    islower = 0
-    if length < 8:
-        print(f'8자리 이상 입력')
-    else:
-        for char in text:
-            if char.isdigit():
-                isdigit=1
-            elif char.isupper():
-                isupper=1
-            elif char.islower():
-                islower=1
+	isdigit = 0
+	isupper = 0
+	islower = 0
+	pass1 = input()
+	length = len(pass1)
 
-        if not isupper:
-            print(f'대문자 필요')
-        if not islower:
-            print(f'소문자 필요')
-        if not isdigit:
-            print(f'숫자 필요')
-        if isdigit and isupper and islower:
-            print(f'완벽')
+	if length < 5:
+		print(f'다시입력')
+		continue
+	for char in pass1:
+		if char.isdigit():
+			isdigit = 1
+		if char.isupper():
+			isupper = 1
+		if char.islower():
+			islower = 1
+
+	if isdigit == 1 and isupper == 0 and islower == 0:
+		print(f'문자입력')
+		continue
+	if isdigit == 0:
+		print(f'숫자입력')
+		continue
+	elif isupper == 0:
+		print(f'대문자')
+		continue
+	elif islower == 0:
+		print(f'소문자')
+		continue
+	if isdigit == 1 and isupper == 1 and islower == 1:
+		print(f'완벽합니다')
+		break
 
 #Quiz8
 num1, num2 = map(float, input().split())
