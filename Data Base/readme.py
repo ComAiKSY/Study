@@ -23,7 +23,7 @@ turncate / 전체삭제, 빠름, 테이블 남음
 6.3 select  Language "언어", count(CountryCode) "사용국가수" from countrylanguage group by Language order by count(CountryCode) desc limit 5
 
 4장 문제
-28p.2 
+28p.2
     select M.addr 지역, sum(B.amount*B.price) 금액 from member M
     inner join buy B
     on M.mem_id = B.mem_id
@@ -70,22 +70,22 @@ Quiz 8
     select name  as 도시이름, (select name from country where code = city.countrycode) as 나라이름, population as 도시인구 from city where Population >= 9000000 order by 도시인구 desc;
 
 Quiz 9
-    SELECT 
-    C.Name AS 나라이름, 
-    C.Code AS code, 
+    SELECT
+    C.Name AS 나라이름,
+    C.Code AS code,
     COUNT(*) AS 공식언어수
     FROM countrylanguage L
     INNER JOIN country C ON C.Code = L.CountryCode
     WHERE L.IsOfficial = 'T'
     GROUP BY C.Code
     HAVING COUNT(*) >= 3
-    order by COUNT(*) desc; 
+    order by COUNT(*) desc;
 
-    SELECT 
+    SELECT
         (SELECT name FROM country WHERE code = countrylanguage.CountryCode) AS 나라이름,
         CountryCode AS code,
         COUNT(*) AS 공식언어수
-        FROM countrylanguage 
+        FROM countrylanguage
         WHERE IsOfficial = 'T'
         GROUP BY CountryCode
         HAVING COUNT(*) >= 3
@@ -177,7 +177,7 @@ Quiz 1
 Quiz 2
     usertable에 널을 포함한 데이터를 몇 행 insert하세요.
 
-    (1) 테이블명 다음 괄호에 널 제외한 컬럼명 지정 후 insert 
+    (1) 테이블명 다음 괄호에 널 제외한 컬럼명 지정 후 insert
 
         INSERT INTO usertable (userid, username, regyear) VALUES ('user1', '홍길동', 2024);
 
@@ -193,7 +193,7 @@ Quiz 4
     아래 3가지 방법으로 널처리 (하이픈, 점, 스페이스 같은 특수
     기호가 나오도록 구현) 하세요.
 
-    (1)select할 때 미리 ifnull(컬럼,대체) 해서 가져옴. 
+    (1)select할 때 미리 ifnull(컬럼,대체) 해서 가져옴.
         SELECT userid, username, IFNULL(email, '-'), IFNULL(regyear, '.') FROM usertable;
 
     (2)strData2,3,4에 넣을 때 one-line if문 사용
@@ -243,7 +243,7 @@ Quiz 5
         window.mainloop()
 
 Quiz #6
- [앞 문제들의 결과를 모두 반영해서] market_db의 member 테이블에 대한 입력/조회/삭제 프로그램을 구현하세요. 
+ [앞 문제들의 결과를 모두 반영해서] market_db의 member 테이블에 대한 입력/조회/삭제 프로그램을 구현하세요.
  - (primary key 는 이미 설정되어 있으므로 생략)
  - 널 처리
  - 삭제버튼 추가
