@@ -4,73 +4,65 @@
 #include <cmath>;
 #define GL_PI 3.1415f
 // 정면 렌더링
-void RenderScene(void) {
-    //std::cout << "Render Scene" << std::endl;
-    float radius = 50.0f;
-    int num = 16;
-
-    glBegin(GL_TRIANGLES);
-    for (int i = 0; i < num; i++) {
-        float angle1 = 2.0f * GL_PI * i / num;
-        float angle2 = 2.0f * GL_PI * (i + 1) / num;
-
-        float x1 = cos(angle1) * radius;
-        float y1 = sin(angle1) * radius;
-
-        float x2 = cos(angle2) * radius;
-        float y2 = sin(angle2) * radius;
-
-       
-        if (i % 2 == 0)
-            glColor3f(1.0f, 0.0f, 0.0f);  // 빨간색
-        else
-            glColor3f(0.0f, 1.0f, 0.0f);  // 초록색
-
-        glVertex2f(0.0f, 0.0f);   // 중심점
-        glVertex2f(x1, y1);   // 외곽점 1
-        glVertex2f(x2, y2);   // 외곽점 2
-    }
-    glEnd();
-
-    glutSwapBuffers();
-}
 //void RenderScene(void) {
 //    //std::cout << "Render Scene" << std::endl;
-//    glColor3f(0.0f, 1.0f, 0.0f);  // 녹색
-//    int num= 32;
 //    float radius = 50.0f;
+//    int num = 16;
 //
-//    glBegin(GL_TRIANGLE_FAN);
-//    glVertex2f(0.0f, 0.0f);  // 중심점
+//    glBegin(GL_TRIANGLES);
+//    for (int i = 0; i < num; i++) {
+//        float angle1 = 2.0f * GL_PI * i / num;
+//        float angle2 = 2.0f * GL_PI * (i + 1) / num;
 //
-//    for (int i = 0; i <= num; i++) {
-//        float angle = 2.0f * GL_PI * i / num;
-//        float x = cos(angle) * radius;
-//        float y = sin(angle) * radius;
-//        glVertex2f(x, y);
-//    }
-//    glEnd();
+//        float x1 = cos(angle1) * radius;
+//        float y1 = sin(angle1) * radius;
 //
-//    glPointSize(10.0f);
-//    glBegin(GL_POINTS);
-//    glColor3f(1.0f, 0.0f, 0.0f);
-//    glVertex2f(0.0f, 0.0f);  // 중심점
+//        float x2 = cos(angle2) * radius;
+//        float y2 = sin(angle2) * radius;
 //
-//    for (int i = 0; i <= num; i++) {
-//        float angle = 2.0f * GL_PI * i / num;
-//        float x = cos(angle) * radius;
-//        float y = sin(angle) * radius;
-//        glVertex2f(x, y);
+//       
+//        if (i % 2 == 0)
+//            glColor3f(1.0f, 0.0f, 0.0f);  // 빨간색
+//        else
+//            glColor3f(0.0f, 1.0f, 0.0f);  // 초록색
+//
+//        glVertex2f(0.0f, 0.0f);   // 중심점
+//        glVertex2f(x1, y1);   // 외곽점 1
+//        glVertex2f(x2, y2);   // 외곽점 2
 //    }
 //    glEnd();
 //
 //    glutSwapBuffers();
 //}
+void RenderScene(void) {
+    //std::cout << "Render Scene" << std::endl;
+    glColor3f(0.0f, 1.0f, 0.0f);  // 녹색
+    int num= 8;
+    float radius = 50.0f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(0.0f, 0.0f);  // 중심점
+
+    for (int i = 0; i <= num; i++) {
+        float angle = 2.0f * GL_PI * i / num;
+        float x = cos(angle) * radius;
+        float y = sin(angle) * radius;
+        if (i % 2 == 0)
+            glColor3f(0.0f, 1.0f, 0.0f);  // 빨간색
+        else
+            glColor3f(1.0f, 0.0f, 0.0f);  // 초록색
+        glVertex2f(x, y);
+    }
+
+    glEnd();
+
+    glutSwapBuffers();
+}
 
 void SetupRC(void) {
     std::cout << "SetupRC" << std::endl;
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    glShadeModel(GL_SMOOTH);
+    glShadeModel(GL_FLAT);
 }
 
 void ChangeSize(GLsizei w, GLsizei h) {
