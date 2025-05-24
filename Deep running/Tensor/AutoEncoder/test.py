@@ -16,38 +16,40 @@ if __name__ == "__main__":
     model_path = "./model/dae_model.weights.h5"
     noise_prob = 0.5
 
-    # === 데이터 불러오기 ===
+    # 데이터 불러오기 
     data_loader = MNISTData()
     data_loader.load_data()
     x_test = data_loader.x_test
     y_test = data_loader.y_test
 
-    # === 모델 로드 ===
+    # 모델 로드 
     auto_encoder = AutoEncoder()
     auto_encoder.build_model()
     auto_encoder.load_weights(model_path)
 
-    # ---------------------------------------
-    # [2번] 56개 테스트 데이터로 노이즈 → 복원 → 시각화
-    # ---------------------------------------
-    print("== [2번] 노이즈 → 복원 이미지 시각화 ==")
+
+    # [2. Denoising 성능 확인, 20점] #################################################################################################
+
+    # Test data 중 56개를 선택
+    print("2번 노이즈 -> 복원 이미지 시각화")
     num_samples = 56
-    x_vis = x_test[:num_samples]
+    x_vis = x_test[:num_samples] 
     y_vis = y_test[:num_samples]
 
     x_vis_noised = add_noise(x_vis, drop_prob=noise_prob)
     x_vis_noised_img = x_vis_noised.reshape(num_samples, data_loader.width, data_loader.height)
 
-    x_reconstructed = auto_encoder.en_decoder.predict(x_vis_noised)
+    x_reconstructed = auto_encoder.en_decoder.predict(x_vis_noised) # Autoencoder 복원
     x_reconstructed_img = x_reconstructed.reshape(num_samples, data_loader.width, data_loader.height)
     x_reconstructed_img = tf.math.sigmoid(x_reconstructed_img)
 
-    MNISTData.print_56_pair_images(x_vis_noised_img, x_reconstructed_img.numpy(), y_vis)
+    MNISTData.print_56_pair_images(x_vis_noised_img, x_reconstructed_img.numpy(), y_vis) # 이미지 쌍 시각화
 
-    # ---------------------------------------
-    # [3번] 클래스별 평균 코드 → 복원 → 시각화
-    # ---------------------------------------
-    print("== [3번] 숫자별 평균 코드로 생성된 이미지 시각화 ==")
+
+    # [3. 각 숫자(class)별 code 평균값으로 이미지 생성, 10점] ########################################################################## 
+
+    print("3번 숫자별 평균 코드 생성 이미지 시각화")
+    # 1000개의 이미지를 선별
     num_for_avg = 1000
     x_avg = x_test[:num_for_avg]
     y_avg = y_test[:num_for_avg]
@@ -59,31 +61,31 @@ if __name__ == "__main__":
     count_per_class = np.zeros(10)
 
     for i, label in enumerate(y_avg):
-        avg_codes[label] += latent_vecs[i]
+        avg_codes[label] += latent_vecs[i] # 평균 누적합
         count_per_class[label] += 1
 
     for i in range(10):
         if count_per_class[i] > 0:
             avg_codes[i] /= count_per_class[i]
 
-    decoded_imgs = auto_encoder.decoder.predict(avg_codes)
+    decoded_imgs = auto_encoder.decoder.predict(avg_codes) # 각 class별 평균
     decoded_imgs = decoded_imgs.reshape(10, data_loader.width, data_loader.height)
     decoded_imgs = tf.math.sigmoid(decoded_imgs)
 
     label_list = [str(i) for i in range(10)]
     MNISTData.print_10_images(decoded_imgs.numpy(), label_list)
 
-    # ---------------------------------------
-    # [4번] 평균 ± 표준편차 × 랜덤 → 숫자 5개씩 생성
-    # ---------------------------------------
-    print("== [4번] 숫자별 평균 코드 + 랜덤으로 생성된 이미지 시각화 ==")
+
+    # [4. 각 숫자별(class별) code 평균값 및 표준편차를 활용하여 새로운 숫자 생성, 20점] ################################################# 
+
+    print("4번 숫자별 평균 코드 + 랜덤 생성 이미지 시각화")
 
     # 클래스별 표준편차 계산
     std_codes = np.zeros((10, code_dim))
     sum_sq_diff = np.zeros((10, code_dim))
 
     for i, label in enumerate(y_avg):
-        diff = latent_vecs[i] - avg_codes[label]
+        diff = latent_vecs[i] - avg_codes[label] # 표준편차 계산
         sum_sq_diff[label] += diff ** 2
 
     for i in range(10):
@@ -96,7 +98,7 @@ if __name__ == "__main__":
 
     for digit in range(10):
         for j in range(5):
-            rand_vec = np.random.uniform(-1, 1, size=code_dim)
+            rand_vec = np.random.uniform(-1, 1, size=code_dim) # 랜덤벡터 생성
             code_sample = avg_codes[digit] + std_codes[digit] * rand_vec
             img = auto_encoder.decoder.predict(code_sample.reshape(1, -1))
             img = img.reshape(data_loader.width, data_loader.height)
@@ -109,10 +111,10 @@ if __name__ == "__main__":
     # 시각화
     MNISTData.print_50_images(all_gen_imgs, all_labels)
 
-    # ---------------------------------------
-    # [5번] 평균 코드의 위치관계 T-SNE 시각화
-    # ---------------------------------------
-    print("== [5번] 평균 코드 T-SNE 시각화 ==")
+
+    # [5. 각 숫자별(class별) code 평균값 위치관계 확인, 20점] #########################################################################
+
+    print("5번 평균 코드 T-SNE 시각화")
 
     from sklearn.manifold import TSNE
     import matplotlib.pyplot as plt
