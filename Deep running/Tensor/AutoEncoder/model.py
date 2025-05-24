@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-class AutoEncoder:
+class AutoEncoder: # AutoEncoder
     def __init__(self):
         self.encoder = None
         self.decoder = None
