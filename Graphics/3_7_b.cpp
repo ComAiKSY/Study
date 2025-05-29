@@ -1,0 +1,156 @@
+#include <GL/glut.h>
+#include <stdio.h>
+#include <iostream>
+#include <cmath>;
+#define GL_PI 3.1415f
+
+bool bCull = true;
+
+GLfloat xTran = 0.0f;
+GLfloat yTran = 0.0f;
+GLfloat xRot = 0.0f;
+GLfloat yRot = 0.0f;
+
+
+void RenderScene(void) {
+    glClear(GL_COLOR_BUFFER_BIT);
+    if (bCull)
+        glEnable(GL_CULL_FACE);
+    else
+        glDisable(GL_CULL_FACE);
+
+    glPushMatrix();
+    glRotatef(xRot, 1.0f, 0.0f, 0.0f);
+    glRotatef(yRot, 0.0f, 1.0f, 0.0f);
+    glTranslatef(xTran, yTran, 0.0f);
+
+    GLfloat x, y, z, angle;
+    int iPivot = 1;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex3f(0.0f, 0.0f, 75.0f);
+    for (angle = 0.0f; angle < 2.0f * GL_PI; angle += (GL_PI / 8.0f))
+    {
+        x = 50.0f * cos(angle);
+        y = 50.0f * sin(angle);
+
+        if ((iPivot % 2) == 0)
+            glColor3f(1.0f, 0.0f, 0.0f);
+        else
+            glColor3f(0.0f, 1.0f, 0.0f);
+        iPivot++;
+        glVertex2f(x, y);
+    }
+    glEnd();
+
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex3f(0.0f, 0.0f, 0.0f);
+    for (angle = 0.0f; angle < 2.0f * GL_PI; angle += (GL_PI / 8.0f))
+    {
+        x = 50.0f * sin(angle);
+        y = 50.0f * cos(angle);
+
+        if ((iPivot % 2) == 0)
+            glColor3f(0.0f, 1.0f, 0.0f);
+        else
+            glColor3f(1.0f, 0.0f, 0.0f);
+        iPivot++;
+        glVertex2f(x, y);
+    }
+    glEnd();
+    
+
+    glPopMatrix();
+    glutSwapBuffers();
+}
+
+void keyboard(unsigned char key, int x, int y) {
+    if (key == 'a')
+        xTran += 2.0f;
+    else if (key == 'd')
+        xTran -= 2.0f;
+    else if (key == 'w')
+        yTran += 2.0f;
+    else if (key == 's')
+        yTran -= 2.0f;
+
+    glutPostRedisplay();
+}
+
+void SpecialKeys(int key, int x, int y)
+{
+    if (key == GLUT_KEY_UP)
+        xRot -= 2.0f;
+    else if (key == GLUT_KEY_DOWN)
+        xRot += 2.0f;
+    else if (key == GLUT_KEY_LEFT)
+        yRot -= 2.0f;
+    else if (key == GLUT_KEY_RIGHT)
+        yRot += 2.0f;
+
+    //예외 처리
+    if (xRot > 360.0f)
+        xRot -= 360.0f;
+    if (xRot < 0.0f)
+        xRot += 360.0f;
+    if (yRot > 360.0f)
+        yRot -= 360.0f;
+    if (yRot < 0.0f)
+        yRot += 360.0f;
+
+    glutPostRedisplay();
+}
+
+void SetupRC(void) {
+    std::cout << "SetupRC" << std::endl;
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glShadeModel(GL_FLAT);
+
+}
+
+void ChangeSize(GLsizei w, GLsizei h) {
+    std::cout << "w = " << w << " " << " h = " << h << std::endl;
+    std::cout << "ChangeSize" << std::endl;
+
+    GLint wSize = 1;
+    GLfloat aspectRatio;
+
+    if (h == 0) {
+        h = 1;
+    }
+    glViewport(0, 0, w, h);
+
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+
+    aspectRatio = (GLfloat)w / (GLfloat)h;
+    if (w <= h)
+        glOrtho(-100, 100, -100 / aspectRatio, 100 / aspectRatio, -500, 500);
+    else
+        glOrtho(-100 * aspectRatio, 100 * aspectRatio, -100, 100, -500, 500);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+
+    gluLookAt( // +z 방향 바라보도록 카메라 위치 조정
+        0.0, 0.0, 0.0,    // 카메라 위치
+        0.0, 0.0, 1.0,    // 바라보는 지점 (+z 방향)
+        0.0, 1.0, 0.0     // 업 벡터
+    );
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitWindowSize(500, 500);
+    glutInitWindowPosition(100, 100);
+    glutCreateWindow("simple");
+
+    SetupRC();
+    glutDisplayFunc(RenderScene);
+    glutReshapeFunc(ChangeSize);
+    glutKeyboardFunc(keyboard);
+    glutSpecialFunc(SpecialKeys);
+    glutMainLoop();
+}
