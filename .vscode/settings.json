@@ -63,6 +63,7 @@
         "xstring": "cpp",
         "xtr1common": "cpp",
         "xtree": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "3_7_a_0": "c"
     }
 }
