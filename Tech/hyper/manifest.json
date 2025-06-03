@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Open Selected Links in New Tabs + Auto Download",
+  "version": "1.1",
+  "description": "선택한 영역 내 링크를 새 탭으로 열고 다운로드 버튼도 자동 클릭합니다.",
+  "permissions": ["contextMenus", "scripting", "tabs"],
+  "host_permissions": [
+    "https://fuckingfast.co/*",
+    "https://fitgirl-repacks.site/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Open Selected Links"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://fuckingfast.co/*",
+        "https://fitgirl-repacks.site/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
