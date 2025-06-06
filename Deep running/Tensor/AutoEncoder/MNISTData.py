@@ -19,21 +19,16 @@ class MNISTData:
         self.x_train, self.y_train = mnist_train_data
         self.x_test, self.y_test = mnist_test_data
 
-        # test code - begin
-        # MNISTData.print_image(self.x_train[0])
         train_size = len(self.x_train)
         test_size = len(self.x_test)
         print("data size before split: train: %d, test: %d" % (train_size, test_size))
 
-        # test code - end
         self.x_train = MNISTData.preprocessing_x(self.x_train)
         self.x_test = MNISTData.preprocessing_x(self.x_test)
 
         train_size = len(self.x_train)
         test_size = len(self.x_test)
 
-        # test code
-        # MNISTData.print_image(self.x_train[0])
         self.width = self.x_train.shape[1]
         self.height = self.x_train.shape[2]
         w_by_h = self.x_train.shape[1] * self.x_train.shape[2]
@@ -49,19 +44,16 @@ class MNISTData:
         self.x_train, self.y_train = mnist_train_data
         self.x_test, self.y_test = mnist_test_data
 
-        # test code - begin
         train_size = len(self.x_train)
         test_size = len(self.x_test)
         print("data size before split: train: %d, test: %d" % (train_size, test_size))
 
-        # test code - end
         self.x_train = MNISTData.preprocessing_x(self.x_train)
         self.x_test = MNISTData.preprocessing_x(self.x_test)
 
         train_size = len(self.x_train)
         test_size = len(self.x_test)
 
-        # test code
         self.width = self.x_train.shape[1]
         self.height = self.x_train.shape[2]
         w_by_h = self.x_train.shape[1] * self.x_train.shape[2]
