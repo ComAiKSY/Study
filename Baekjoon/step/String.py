@@ -22,3 +22,9 @@ for i in range(T):
 
 for i in range(T):
     print(result[i])
+
+#11654
+import sys
+
+ch = sys.stdin.readline().strip()
+print(ord(ch))
