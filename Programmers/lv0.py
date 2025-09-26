@@ -10,3 +10,29 @@ angle2 = int(input())
 sum_angle = (angle1 + angle2)%360
 
 print(sum_angle)
+
+"[PCCE 기출문제] 3번 / 수 나누기"
+number = int(input())
+
+answer = 0
+
+while number > 0:
+    answer += number % 100
+    number //= 100
+
+print(answer)
+
+"[PCCE 기출문제] 4번 / 병과분류"
+code = input()
+last_four_words = code[-4:]
+
+if last_four_words == "_eye":
+    print("Ophthalmologyc")
+elif last_four_words == "head":
+    print("Neurosurgery")
+elif last_four_words == "infi":
+    print("Orthopedics")
+elif last_four_words == "skin":
+    print("Dermatology")
+else:
+    print("direct recommendation")
