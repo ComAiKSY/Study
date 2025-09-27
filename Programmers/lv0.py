@@ -36,3 +36,12 @@ elif last_four_words == "skin":
     print("Dermatology")
 else:
     print("direct recommendation")
+
+def solution(cpr):
+    answer = []
+    basic_order = ["check", "call", "pressure", "respiration", "repeat"]
+    for action in cpr:                     # 주어진 cpr 리스트에서 하나씩 확인
+        for i in range(len(basic_order)):  # 기본 순서와 비교
+            if action == basic_order[i]:
+                answer.append(i + 1)       # 단계 번호(1부터 시작)를 추가
+    return answer
