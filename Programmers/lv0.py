@@ -45,3 +45,14 @@ def solution(cpr):
             if action == basic_order[i]:
                 answer.append(i + 1)       # 단계 번호(1부터 시작)를 추가
     return answer
+
+
+def solution(storage, usage, change):
+    total_usage = 0
+    for i in range(len(change)):
+        usage = int(usage * (100 + change[i]) / 100)  # ← 수정된 한 줄
+        total_usage += usage
+        if total_usage > storage:
+            return i
+
+    return -1
