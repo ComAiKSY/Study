@@ -56,3 +56,14 @@ def solution(storage, usage, change):
             return i
 
     return -1
+
+def solution(seat, passengers):
+    cur = 0  # 현재 탑승 인원
+    for station in passengers:
+        # 하차(음수 방지)
+        cur = func1(cur - func3(station))
+        # 승차(좌석 한도 적용)
+        board = min(seat - cur, station.count("On"))  # ← 핵심 한 줄
+        cur += board
+    # 영진이가 타려는 순간의 빈 좌석 수(영진이 착석 전 기준)
+    return func1(seat - cur)
