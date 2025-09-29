@@ -40,17 +40,17 @@ else:
 def solution(cpr):
     answer = []
     basic_order = ["check", "call", "pressure", "respiration", "repeat"]
-    for action in cpr:                     # 주어진 cpr 리스트에서 하나씩 확인
-        for i in range(len(basic_order)):  # 기본 순서와 비교
+    for action in cpr:
+        for i in range(len(basic_order)):
             if action == basic_order[i]:
-                answer.append(i + 1)       # 단계 번호(1부터 시작)를 추가
+                answer.append(i + 1)
     return answer
 
 
 def solution(storage, usage, change):
     total_usage = 0
     for i in range(len(change)):
-        usage = int(usage * (100 + change[i]) / 100)  # ← 수정된 한 줄
+        usage = int(usage * (100 + change[i]) / 100)
         total_usage += usage
         if total_usage > storage:
             return i
@@ -58,12 +58,9 @@ def solution(storage, usage, change):
     return -1
 
 def solution(seat, passengers):
-    cur = 0  # 현재 탑승 인원
+    cur = 0
     for station in passengers:
-        # 하차(음수 방지)
         cur = func1(cur - func3(station))
-        # 승차(좌석 한도 적용)
-        board = min(seat - cur, station.count("On"))  # ← 핵심 한 줄
+        board = min(seat - cur, station.count("On"))
         cur += board
-    # 영진이가 타려는 순간의 빈 좌석 수(영진이 착석 전 기준)
     return func1(seat - cur)
