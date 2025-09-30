@@ -64,3 +64,23 @@ def solution(seat, passengers):
         board = min(seat - cur, station.count("On"))
         cur += board
     return func1(seat - cur)
+
+def solution(nickname):
+    answer = ""
+    for letter in nickname:
+        if letter == "l":
+            answer += "I"
+        elif letter == "w":
+            answer += "vv"
+        elif letter == "W":
+            answer += "VV"
+        elif letter == "O":
+            answer += "0"
+        else:
+            answer += letter
+    if len(answer) < 4:   # ← 여기만 수정
+        answer += "o"
+    if len(answer) > 8:
+        answer = answer[:8]
+    return answer
+
