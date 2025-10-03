@@ -103,3 +103,33 @@ def solution(nickname):
         answer = answer[:8]
     return answer
 
+def solution(mats, park):
+    R = len(park)
+    C = len(park[0]) if R > 0 else 0
+
+    # 빈칸: "-1" → 1, 그 외(사람이 앉아 있음) → 0
+    bin_grid = [[1 if park[i][j] == "-1" else 0 for j in range(C)] for i in range(R)]
+
+    # 최대 정사각형 DP
+    dp = [[0] * C for _ in range(R)]
+    max_sq = 0
+    for i in range(R):
+        for j in range(C):
+            if bin_grid[i][j] == 1:
+                if i == 0 or j == 0:
+                    dp[i][j] = 1
+                else:
+                    dp[i][j] = 1 + min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1])
+                if dp[i][j] > max_sq:
+                    max_sq = dp[i][j]
+
+    mats_set = set(mats)
+
+    best = -1
+ 
+    for k in sorted(mats_set, reverse=True):
+        if k <= max_sq:
+            best = k
+            break
+
+    return best
