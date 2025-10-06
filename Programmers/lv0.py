@@ -126,10 +126,41 @@ def solution(mats, park):
     mats_set = set(mats)
 
     best = -1
- 
+
     for k in sorted(mats_set, reverse=True):
         if k <= max_sq:
             best = k
             break
 
     return best
+
+def solution(video_len, pos, op_start, op_end, commands):
+    def to_sec(t):
+        m, s = map(int, t.split(":"))
+        return m * 60 + s
+
+    def to_mmss(x):
+        m = x // 60
+        s = x % 60
+        return f"{m:02d}:{s:02d}"
+
+    L = to_sec(video_len)
+    p = to_sec(pos)
+    op_s = to_sec(op_start)
+    op_e = to_sec(op_end)
+
+    # 오프닝 건너뛰기: 초기 위치에 대해 우선 적용
+    if op_s <= p <= op_e:
+        p = op_e
+
+    for cmd in commands:
+        if cmd == "prev":
+            p = max(0, p - 10)
+        elif cmd == "next":
+            p = min(L, p + 10)
+
+        # 오프닝 구간이면 즉시 op_end로 이동
+        if op_s <= p <= op_e:
+            p = op_e
+
+    return to_mmss(p)
