@@ -176,7 +176,6 @@ def solution(data, ext, val_ext, sort_by):
     # 조건(ext < val_ext) 필터링
     filtered = [row for row in data if row[ext_idx] < val_ext]
 
-    # sort_by 기준 오름차순 정렬
     filtered.sort(key=lambda row: row[sort_idx])
 
     return filtered
