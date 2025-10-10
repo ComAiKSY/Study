@@ -78,7 +78,7 @@ def solution(nickname):
             answer += "0"
         else:
             answer += letter
-    if len(answer) < 4:   # ← 여기만 수정
+    if len(answer) < 4:
         answer += "o"
     if len(answer) > 8:
         answer = answer[:8]
