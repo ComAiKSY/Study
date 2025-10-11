@@ -166,7 +166,7 @@ def solution(video_len, pos, op_start, op_end, commands):
     return to_mmss(p)
 
 def solution(data, ext, val_ext, sort_by):
-    # 열 이름 → 인덱스 매핑
+
     col_idx = {"code": 0, "date": 1, "maximum": 2, "remain": 3}
 
     # 기준 열 인덱스 추출
