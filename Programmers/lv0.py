@@ -107,7 +107,7 @@ def solution(mats, park):
     R = len(park)
     C = len(park[0]) if R > 0 else 0
 
-    # 빈칸: "-1" → 1, 그 외(사람이 앉아 있음) → 0
+
     bin_grid = [[1 if park[i][j] == "-1" else 0 for j in range(C)] for i in range(R)]
 
     # 최대 정사각형 DP
